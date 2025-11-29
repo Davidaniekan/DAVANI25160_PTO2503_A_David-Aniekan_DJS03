@@ -1,75 +1,147 @@
-# DJS03: React Podcast Landing Page
+# 🎙️ Podcast Explorer – React Application
+---
+## 📌 Overview
+Podcast Explorer is a modern React application designed to display a clean, responsive grid of podcast previews. Each podcast is presented as an interactive visual card containing its *cover*, *title*, *genres*, *season count*, and *updated date*.
+This project demonstrates the fundamentals of component-based UI design, reusable logic patterns, and state-driven rendering in React.
 
-## Overview
-
-In this project, you will build the landing page for a podcast discovery app using **React**. Your goal is to fetch podcast data from an external API and dynamically render a **responsive grid of podcast previews**. This project focuses on **data fetching**, **component structure**, **rendering logic**, and **layout styling**.
+Although search, filtering, and modal interaction elements are visually present, **their logic is not yet implemented in this version**. These features will be added in a future phase of the project.
 
 ---
 
-## Core Objectives
-
-- Fetch podcast data from an API: https://podcast-api.netlify.app/ on initial page load.
-- Display a loading indicator while data is being fetched, and handle errors or empty results with a clear user message.
-- Render a responsive **grid layout** of podcast previews using modular, reusable React components.
-- Pass podcast data into components via props and render each podcast card with the following:
-  - Podcast **image**
-  - Podcast **title**
-  - Number of **seasons**
-  - Associated **genre names**
-  - Formatted **last updated** date (e.g., "2 days ago")
-- Apply clean, consistent layout and styling across different screen sizes using CSS Grid or Flexbox.
-- Maintain high-quality, readable code with clear structure and **JSDoc comments** for key functions and components.
+## 📘 Project description
+- The application loads and displays podcasts using an API helper and React state management. It uses modular components — such as `PodcastCard`, `PodcastGrid`, `Header`, and `Container` — to ensure the UI is structured, readable, and easy to extend.
+- Podcasts are displayed in a structured layout, with genre mapping, date formatting, and responsive card styling.
+The focus of this version is **presentation, rendering efficiency, component reuse, and data mapping**, while interaction-based features (search, filter, modal) are intentionally left incomplete for later implementation.
 
 ---
 
-## Technical Requirements
-
-- Use **React functional components**
-- Use the **Fetch API**
-- Use `useEffect()` to fetch data once on mount
-- Use `useState()` to manage podcast data
-- Use `.map()` to dynamically render PodcastPreviewCard components
-- Format dates using `date-fns` or a custom formatter
-
----
-
-## Responsiveness Requirements
-
-- Must look good on:
-  - Desktop (≥1200px)
-  - Tablet (~768px)
-  - Mobile (~375px)
-- Use **CSS Grid** or **Flexbox**
-- Media queries or frameworks like **Tailwind CSS** are allowed
+## 🛠️ Technologies used
+- **React 18+**
+- **JavaScript (ES6+)**
+- **Vite** (or your chosen bundler)
+- **CSS (global styles + component-specific styling)**
+- **Fetch API** (used inside the API helper)
+- **SVG assets**
+- **JSX + Functional Component Architecture**
 
 ---
 
-## Deliverables
+## ✨ Features
+### 🎨 UI Rendering
+- Responsive grid of podcast cards
+- Each card displays:
+  - Cover image
+  - Title
+  - Genre tags
+  - Season count
+  - Human-readable "Updated" date
 
-- **Functional React Application**
+### 🧩 Component-Based Architecture
+- `PodcastCard.jsx` → Single podcast preview
+- `PodcastGrid.jsx` → Layout engine for list rendering
+- `Header.jsx` → Top application header
+- `Container.jsx` → Space for future search/filter UI
+- `App.jsx` → Main logic and data flow
+- `fetchPodcast.js` → Centralized API helper
 
-  - A working React app that fetches podcast data from an external API on initial load.
-  - The app renders a grid of podcast previews using reusable components.
+### 🔄 Data Processing
+- Genre ID → Genre name mapping
+- ISO date → Localized readable format
+- Initial fetch on page load
+- Loading and error handling states
 
-- **Loading, Error, and Empty States**
+### 🚧 Features Included in UI but Not Yet Functional
+*(These are visual placeholders only. Logic will be implemented in the next project.)*
+- Search bar
+- Genre filter
+- Sorting options
+- Modal opening on card click
 
-  - A clear loading indicator is displayed while fetching data.
-  - Meaningful error or empty state messaging is shown if the fetch fails or returns no results.
+---
 
-- **Podcast Preview Card Component**
+## 📁 Project Structure
+```
+📂 PodcastApp/
+│
+├── index.html                     # HTML layout
+│
+├── 📂 src
+│   ├── 📂 api/
+│   │   ├── fetchPodcast.js       # Fetches podcast data
+│   │
+│   ├── 📂 assets/                # SVG icons and assets
+│   │
+│   ├── 📂 components/ 
+│   │   ├── Container.jsx         # Placeholder for search/filter controls
+│   │   ├── Header.jsx            # Page header
+│   │   ├── PodcastCard.jsx       # Renders a single podcast card
+│   │   └── PodcastGrid.jsx       # Renders all podcasts
+│   │
+│   ├── data.js                   # Genre metadata
+│   ├── App.jsx                   # Main application component
+│   ├── App.css                   # Page-specific styling
+│   ├── index.css                 # Global styles
+└── └── main.jsx                  # App bootstrap
+```
+---
 
-  - A reusable component that displays:
-    - Podcast image
-    - Podcast title
-    - Number of seasons
-    - Genre tags
-    - Last updated date in a human-readable format (e.g., "3 days ago")
+## ⚙️ Setup Instructions
+#### 1️⃣ Clone the repository
+   ```bash
+   git clone https://github.com/Davidaniekan/DAVANI25160_PTO2503_A_David-Aniekan_DJS03.git
 
-- **Responsive Layout**
+   cd podcastApp
+   ```
+#### 2️⃣ Install dependencies
+- Using npm:
+   ```bash
+   npm install
+   ```
+#### 3️⃣ Start development server
+  ```bash
+   npm run dev
+   ```
+- Your app will run at:
+   ```
+   http://localhost:5173/
+   ```
+---
 
-  - Grid layout that adapts to mobile, tablet, and desktop screen sizes using responsive design principles.
+## 🚀 Usage / Interaction guide
+### ▶️ Viewing Podcasts
+Once the application loads:
+- Podcasts will display automatically in a grid.
+- If data is loading, a loading message is shown.
+- If the fetch fails, an error message displays.
 
-- **Codebase**
-  - Clean, modular code with clearly separated components.
-  - All major functions and modules documented with **JSDoc** comments.
-  - Consistent formatting across JavaScript, JSX, HTML, and CSS files.
+### 🎧 Podcast Card Interactions
+Each card shows:
+- Large podcast cover
+- Title
+- Seasons count with icon
+- Genre tags
+- Updated date
+
+The project includes **hover states and keyboard focusability**, preparing the UI for future interactive behavior.
+
+### 🔍 Non-Functional Elements (Visual Only)
+These UI components **exist but do not work yet:**
+- Search bar
+- Genre and sorting filters
+- Modal / expanded detail view
+
+These elements are visible as part of the design but will be implemented in a future iteration.
+
+---
+## 🏗️ Future Enhancements (Planned)
+- Functional search with real-time filtering
+- Functional genre filtering and sorting
+- Detailed modal view triggered by clicking a podcast card
+
+---
+
+## 👤 Author
+
+Developed by **David Aniekan**
+[GitHub](https://github.com/Davidaniekan) | [LinkedIn](https://linkedin.com/in/david-aniekan)
+
